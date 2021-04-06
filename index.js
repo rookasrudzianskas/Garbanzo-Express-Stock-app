@@ -7,12 +7,17 @@ const request = require('request');
 const PORT = process.env.PORT || 5000;
 
 //pk_be5627477eda4219ab8663c382811c82
-request('https://cloud.iexapis.com/stable/stock/fb/quote?token=pk_be5627477eda4219ab8663c382811c82', { json: true }, (err, res, body) => {
-   if(err) {return console.log(err);}
-   if(res.statusCode === 200) {
-       console.log(body);
-   };
-});
+//create call api func
+function call_api(finishedAPI) {
+    request('https://cloud.iexapis.com/stable/stock/fb/quote?token=pk_be5627477eda4219ab8663c382811c82', { json: true }, (err, res, body) => {
+        if(err) {return console.log(err);}
+        if(res.statusCode === 200) {
+            // console.log(body);
+            finishedAPI(body);
+        };
+    });
+};
+
 
 
 
@@ -25,8 +30,10 @@ app.set('view engine', 'handlebars');
 
 //Set hadnlebar routes
 app.get('/', function (req, res) {
-    res.render('home', {
-        stuff: otherStuff
+    call_api(function(doneAPI){
+            res.render('home', {
+            stock: doneAPI
+        });
     });
 });
 
