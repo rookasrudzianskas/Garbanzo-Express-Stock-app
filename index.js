@@ -6,7 +6,7 @@ var exphbs  = require('express-handlebars');
 
 const PORT = process.env.PORT || 5000;
 
-
+const otherStuff = "This is otehr stuff";
 
 //Set handlebars middleware
 
@@ -15,7 +15,9 @@ app.set('view engine', 'handlebars');
 
 //Set hadnlebar routes
 app.get('/', function (req, res) {
-    res.render('home');
+    res.render('home', {
+        stuff: otherStuff
+    });
 });
 
 
