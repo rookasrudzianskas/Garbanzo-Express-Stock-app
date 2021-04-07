@@ -1,8 +1,26 @@
-<h1>{{stock.companyName}} ({{ stock.symbol }})</h1>
-<br><br>
 
-<br>
-<br><br><br>
-{{#each stock}}
-    {{@key}} | {{this}}<br>
-{{/each}}
+
+<div class="p-4 mb-3 bg-light text-dark">
+    <h1 class="display-4">{{stock.companyName}} ({{ stock.symbol }})</h1>
+    <br>
+
+        <strong>Latest Price: </strong>{{ stock.latestPrice }}<br>
+        <strong>Previous Close: </strong>${{ stock.previousClose }}<br>
+        <strong>Percent Change: </strong>{{ stock.changePercent }}%<br>
+        <strong>Market Cap: </strong>${{ stock.marketCap }}<br>
+        <strong>YTD Change: </strong>{{ stock.ytdChange }}%<br>
+        <strong>52wk High: </strong>{{ stock.week52High }}<br>
+        <strong>52wk Low: </strong>{{ stock.week52Low }}<br>
+    <br>
+    <a href="" class="btn btn-primary btn-dark p-2" role="button" href="/">Learn more</a>
+</div>
+
+
+
+
+
+<!--<br><br>-->
+
+<!--{{#each stock}}-->
+<!--    {{@key}} | {{this}}<br>-->
+<!--{{/each}}-->
