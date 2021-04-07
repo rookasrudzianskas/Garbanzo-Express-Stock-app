@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //pk_be5627477eda4219ab8663c382811c82
 //create call api func
-function call_api(finishedAPI) {
-    request('https://cloud.iexapis.com/stable/stock/fb/quote?token=pk_be5627477eda4219ab8663c382811c82', { json: true }, (err, res, body) => {
+function call_api(finishedAPI, ticker) {
+    request('https://cloud.iexapis.com/stable/stock/' + ticker + '/quote?token=pk_be5627477eda4219ab8663c382811c82', { json: true }, (err, res, body) => {
         if(err) {return console.log(err);}
         if(res.statusCode === 200) {
             // console.log(body);
@@ -36,7 +36,7 @@ app.get('/', function (req, res) {
             res.render('home', {
             stock: doneAPI
         });
-    });
+    }, "fb");
 });
 
 //Set index hadebark index POST route
@@ -47,7 +47,7 @@ app.post('/', function (req, res) {
             stock: doneAPI,
 
         });
-    });
+    }, req.body.stock_ticker);
 });
 
 //create about apge rount
