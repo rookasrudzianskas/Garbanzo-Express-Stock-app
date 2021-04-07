@@ -18,9 +18,6 @@ function call_api(finishedAPI) {
     });
 };
 
-
-
-
 const otherStuff = "This is otehr stuff";
 
 //Set handlebars middleware
